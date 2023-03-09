@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "install": "^0.13.0",
+    "npm": "^9.5.1"
+  },
+  "name": "node-movies-ejemplo",
+  "version": "1.0.0",
+  "description": "Ejemplo de proyecto en node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielsoriano/Node-Movies-Ejemplo.git"
+  },
+  "author": "Ariel Soriano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arielsoriano/Node-Movies-Ejemplo/issues"
+  },
+  "homepage": "https://github.com/arielsoriano/Node-Movies-Ejemplo#readme"
+}

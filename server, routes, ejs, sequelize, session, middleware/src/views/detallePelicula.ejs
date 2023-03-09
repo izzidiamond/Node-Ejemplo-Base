@@ -1,0 +1,35 @@
+<!-- detallePelicula.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Detalle de Película</title>
+  </head>
+  <%- include('partials/header') %>
+  <body>
+    <h1>Detalle de Película</h1>
+    <form method="POST" action="/peliculas/editar/<%= movie.id %>?_method=PATCH">
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" value="<%= movie.title %>"><br>
+
+      <label for="rating">Rating:</label>
+      <input type="number" id="rating" name="rating" value="<%= movie.rating %>"><br>
+
+      <label for="awards">Premios:</label>
+      <input type="number" id="awards" name="awards" value="<%= movie.awards %>"><br>
+
+      <label for="release_date">Fecha de estreno:</label>
+      <input type="date" id="release_date" name="release_date" value="<%= movie.release_date.toISOString().substring(0,10) %>"><br>
+
+      <label for="length">Duración:</label>
+      <input type="number" id="length" name="length" value="<%= movie.length %>"><br>
+
+      <label for="genre_id">Género:</label>
+      <input type="number" id="genre_id" name="genre_id" value="<%= movie.genre_id %>"><br>
+
+      <input type="submit" value="Guardar cambios">
+    </form>
+    <a href="/peliculas">Volver a la lista de películas</a>
+  </body>
+</html>
