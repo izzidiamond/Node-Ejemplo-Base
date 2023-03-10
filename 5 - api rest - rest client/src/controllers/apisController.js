@@ -3,7 +3,8 @@ const models = require('../database/models/init-models')(dbSequelize); // import
 
 const apisController = {
     getAllMoviesGet: (req, res) => {
-        models.movies.findAll()
+        //models.movies.findAll()
+        dbSequelize.query('SELECT * FROM movies')
             .then(movies => {
                 res.json(movies);
             })
@@ -12,7 +13,9 @@ const apisController = {
             });
     },
     getMovie: (req, res) => {
-        models.movies.findByPk(req.params.id)
+        //models.movies.findByPk(req.params.id)
+        dbSequelize.query('SELECT * FROM movies WHERE id = :id', { replacements: { id: req.params.id } })
+
             .then(movies => {
                 res.json(movies);
             })
