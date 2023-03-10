@@ -14,7 +14,7 @@ const apisController = {
     },
     getMovie: (req, res) => {
         //models.movies.findByPk(req.params.id)
-        dbSequelize.query('SELECT * FROM movies WHERE id = :id', { replacements: { id: req.params.id } })
+        dbSequelize.query('SELECT * FROM movies WHERE id = :id', { replacements: { id: req.params.id }, type: dbSequelize.QueryTypes.SELECT })
 
             .then(movies => {
                 res.json(movies);
