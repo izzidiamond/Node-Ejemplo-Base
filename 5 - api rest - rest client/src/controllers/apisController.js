@@ -1,5 +1,5 @@
 const dbSequelize = require('../database/database'); // importa la instancia de Sequelize que creaste para la base de datos
-const models = require('../database/models/init-models')(dbSequelize);
+const models = require('../database/models/init-models')(dbSequelize); // importa los modelos de la base de datos
 
 const apisController = {
     getAllMoviesGet: (req, res) => {
