@@ -79,7 +79,7 @@ const apisController = {
                 .catch(error => {
                     console.log(error);
                 });
-        } else {
+        } else {    
             res.json({ error: 'No se pudo modificar la película' });
         }
     },
