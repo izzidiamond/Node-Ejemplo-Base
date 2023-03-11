@@ -10,19 +10,12 @@ const peliculasController = {
             })            
     },
     detalles: (req, res) => {
-        // findbypk a movie and get its name genre
         models.movies.findByPk(req.params.id, {
             include: ['genre']
         })
         .then(movie => {
-            console.log(movie);
             res.render('detallePelicula', { movie });
         })
-        /*models.movies.findByPk(req.params.id)
-            .then(movie => {
-                console.log(movie);
-                res.render('detallePelicula', { movie });
-            })*/
     },
     editar: (req, res) => {
         models.movies.update({
