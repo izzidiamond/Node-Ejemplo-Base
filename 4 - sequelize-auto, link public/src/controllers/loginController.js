@@ -4,11 +4,11 @@ const loginController = {
     },
     
     login: (req, res) => { // POST /login
-        //const { username, password } = req.body;
-        const username = req.body.username;
+        //const { email, password } = req.body;
+        const email = req.body.email;
         const password = req.body.password;
 
-        if (username === 'admin' && password === 'admin') {
+        if (email === 'admin' && password === 'admin') {
             req.session.authenticated = true;
             res.redirect('/peliculas');
         } else {

@@ -1,13 +1,33 @@
-¿Porque usar patch delete y put si puedo simplemente utilizar POST?
+On a 2GHz core you can roughly expect:
+rounds=8 : ~40 hashes/sec
+rounds=9 : ~20 hashes/sec
+rounds=10: ~10 hashes/sec
+rounds=11: ~5  hashes/sec
+rounds=12: 2-3 hashes/sec
+rounds=13: ~1 sec/hash
+rounds=14: ~1.5 sec/hash
+rounds=15: ~3 sec/hash
+rounds=25: ~1 hour/hash
+rounds=31: 2-3 days/hash
 
-En general, la razón por la cual se utilizan diferentes métodos HTTP como PATCH, DELETE y PUT en lugar de solo POST es para seguir las convenciones de diseño de API RESTful y para mejorar la semántica y legibilidad de la API.
 
-Aquí hay algunas razones específicas por las que se utilizan estos métodos HTTP en lugar de solo POST:
 
-Claridad y semántica: cada método HTTP tiene un significado específico y diferente. Por ejemplo, DELETE se usa para eliminar recursos, mientras que PUT se usa para actualizar recursos completos. PATCH se utiliza para actualizar recursos parciales, es decir, actualizar solo algunos campos de un recurso existente. Si solo se usara POST para todas las operaciones, sería menos claro y más difícil de entender qué acción se está realizando.
+Porque en este middleware no uso next() y en los otros si?
+Este middleware, es un middleware de validación que utiliza la biblioteca Express Validator para validar los datos de entrada en una solicitud. En este caso, no es necesario llamar a next() ya que si alguno de los campos de entrada no cumple con las validaciones definidas, se producirá un error de validación y se enviará una respuesta de error al cliente, deteniendo la ejecución del middleware.
 
-Utilización adecuada de HTTP: POST se utiliza principalmente para crear nuevos recursos, pero también se puede utilizar para actualizar recursos existentes. Sin embargo, esto no sigue las convenciones de diseño RESTful. Además, si se usa POST para realizar acciones como la eliminación o actualización de recursos, se violaría el principio de "seguridad de métodos HTTP" en el que solo se permite realizar ciertas acciones con ciertos métodos HTTP.
+Es importante tener en cuenta que no todos los middlewares necesitan llamar a next(). De hecho, algunos middlewares pueden manejar completamente la solicitud y enviar una respuesta sin llamar a next(). Otros middlewares, como los middlewares de autenticación y autorización, pueden necesitar llamar a next() solo si la solicitud se autentica correctamente y el usuario tiene los permisos necesarios para acceder a los recursos protegidos.
 
-Interoperabilidad: los diferentes métodos HTTP tienen diferentes requisitos y comportamientos. Por ejemplo, cuando se usa PUT para actualizar un recurso, se espera que se envíe el recurso completo actualizado en el cuerpo de la solicitud. Si se usa POST para esta operación, no habría una convención clara sobre cómo enviar el recurso actualizado.
+Por otro lado, los middlewares que utilizan next() lo hacen para pasar la solicitud al siguiente middleware o controlador en la cadena de middlewares de Express. Por ejemplo, los middlewares que manejan la autenticación y autorización pueden llamar a next() solo si la solicitud está autenticada y autorizada correctamente para permitir que continúe la ejecución del siguiente middleware o controlador en la cadena de middlewares.
 
-En resumen, aunque es técnicamente posible usar solo POST para todas las operaciones CRUD, el uso de diferentes métodos HTTP como PATCH, DELETE y PUT ayuda a seguir las convenciones de diseño RESTful, mejora la claridad y la semántica de la API, y garantiza la interoperabilidad y el uso adecuado de HTTP.
+En resumen, el uso de next() depende del comportamiento deseado del middleware y de su lugar en la cadena de middlewares de Express. En el caso del middleware de validación que muestras, no es necesario llamar a next() ya que se encarga completamente de manejar la solicitud y enviar una respuesta de error si es necesario.
+
+
+
+Cuando uso compare de bcrypt estoy enviando la password normal a comprar con la password encriptada. Como sabe bcrypt la saltRounds?
+Cuando utilizas bcrypt.compare(password, hash) para comparar la contraseña ingresada por el usuario (password) con la contraseña hasheada almacenada en la base de datos (hash), no necesitas pasar el número de salt rounds que se usó para hashear la contraseña original, porque esa información ya está contenida en el hash almacenado en la base de datos.
+
+La función bcrypt.compare extrae automáticamente el número de salt rounds del hash almacenado en la base de datos, por lo que no es necesario que lo pases explícitamente.
+
+La función bcrypt.compare compara la contraseña sin hashear ingresada por el usuario (password) con la contraseña almacenada en la base de datos (hash), y se asegura de que la contraseña ingresada coincida con la contraseña almacenada después de hashearla con el número de salt rounds correspondiente.
+
+Es importante tener en cuenta que bcrypt.compare devuelve una promesa que resuelve en un valor booleano que indica si las contraseñas coinciden o no.
