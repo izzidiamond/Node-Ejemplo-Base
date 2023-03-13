@@ -1,0 +1,72 @@
+//Para enviar solicitudes (consumir apis) a modo de prueba tipo postman, 
+//usamos el plugin de Visual Studio Code "REST Client".
+//Para usarlo tengo que crear un archivo .http
+//y escribimos las solicitudes que queremos de la siguiente manera:
+
+GET http://localhost:3000/api/getAllMovies HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:3000/api/getMovie/5 HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/getAllMovies HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "key-edelar"
+}
+
+###
+
+POST http://localhost:3000/api/addMovie HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "key-edelar",
+    "title": "Eddie y sus amigos",
+    "rating": 5,
+    "awards": 10,
+    "length": 120,
+    "release_date": "2001-12-01",
+    "genre_id": 1
+}
+
+###
+
+PUT http://localhost:3000/api/updateMovie HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "key-edelar",
+    "id": 25,
+    "title": "Eddie y sus amigos 2", 
+    "rating": 5,
+    "awards": 15, 
+    "length": 120,
+    "release_date": "2001-12-01",
+    "genre_id": 2
+}
+
+###
+
+PATCH http://localhost:3000/api/updateMovie HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "key-edelar",
+    "id": 25,
+    "title": "Eddie y sus amigos 3"
+}
+
+###
+
+DELETE http://localhost:3000/api/deleteMovie HTTP/1.1
+Content-Type: application/json
+
+{
+    "key": "key-edelar",
+    "id": 25
+}
