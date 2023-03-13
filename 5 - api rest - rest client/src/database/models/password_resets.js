@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'password_resets',
-    timestamps: true,
+    timestamps: false,
     indexes: [
       {
         name: "password_resets_email_index",
