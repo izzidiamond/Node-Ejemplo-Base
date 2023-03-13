@@ -7,7 +7,7 @@ const loginController = {
         //const { email, password } = req.body;
         const email = req.body.email;
         const password = req.body.password;
-
+        console.log(req.body)
         if (email === 'admin' && password === 'admin') {
             req.session.authenticated = true;
             res.redirect('/peliculas');

@@ -9,14 +9,6 @@ const modelMovie = dbSequelize.define(
         primaryKey: true,
         autoIncrement: true,
       },
-      created_at: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
-      updated_at: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
       title: {
         type: DataTypes.STRING(500),
         allowNull: false,
