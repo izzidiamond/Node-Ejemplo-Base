@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const dbSequelize = new Sequelize(
   "movies_db", // db name,
   "root", // username
-  "", // password
+  "MERrom92", // password
   {
     host: "localhost",
     dialect: "mysql",
