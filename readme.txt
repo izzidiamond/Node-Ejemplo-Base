@@ -1,0 +1,9 @@
+- ejs - Paquete para utilizar templates en Node.js.
+- sequelize - ORM para Node.js que soporta varias bases de datos.
+- session - Manejo de sesiones de usuario en aplicaciones web.
+- validator - Biblioteca para validar inputs de usuario.
+- bcrypt - Biblioteca para encriptar contraseñas.
+- morgan - Middleware para Node.js que registra las solicitudes HTTP. (log)
+- fs - Módulo nativo de Node.js para trabajar con el sistema de archivos.
+- multer - Middleware para Node.js que maneja el envío de archivos en formularios HTTP.
+- nodemailer: biblioteca de Node.js para enviar correos electrónicos.

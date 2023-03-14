@@ -3,11 +3,17 @@ const app = express();
 const methodOverride = require('method-override');
 const session = require('express-session');
 const requireAuth = require('./middlewares/requireAuth.js');
+var morgan = require('morgan')
+const logMiddleware = require('./middlewares/log.js');
+
 
 // Middlewares
 app.use(methodOverride('_method')); // Para poder pisar el method="POST" en el formulario por PUT y DELETE
 app.use(express.urlencoded({ extended: true })); // Para poder leer los datos de los formularios
 app.use(express.json()); // Para poder leer los datos de los formularios en formato JSON
+app.use(express.static('../public')); // Para poder servir archivos estáticos (CSS, JS, imágenes, etc)
+app.use(morgan('combined'))
+app.use(logMiddleware); // Para poder usar el middleware de log
 
 // Session
 app.use(session({ 
@@ -28,12 +34,14 @@ app.use('/', routerIndex); // Le decimos a Express que use el router de index en
 const routerPeliculas = require('./routes/routePeliculas'); // Importamos el router de peliculas
 app.use('/peliculas', requireAuth, routerPeliculas); // Le decimos a Express que use el router de peliculas en la ruta /peliculas
 
-const routerPeliculas = require('./routes/routePeliculas'); // Importamos el router de peliculas
-app.use('/usuarios', requireAuth, routerPeliculas); // Le decimos a Express que use el router de peliculas en la ruta /peliculas
-
 const routerLogin = require('./routes/routeLogin'); // Importamos el router de login
 app.use('/login', routerLogin); // Le decimos a Express que use el router de login en la ruta /login
 
+const routerApis = require('./routes/routeApis'); // Importamos el router de apis
+app.use('/api', routerApis); // Le decimos a Express que use el router de apis en la ruta /apis
+
+const routerRegister = require('./routes/routeRegister'); // Importamos el router de register
+app.use('/register', routerRegister); // Le decimos a Express que use el router de register en la ruta /register
 
 // Server
 const PUERTO = process.env.PORT || 3000; // Si no existe la variable de entorno PORT, usa el puerto 3000

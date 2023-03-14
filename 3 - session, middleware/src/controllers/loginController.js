@@ -1,3 +1,4 @@
+
 const loginController = {
     index: (req, res) => { // GET /login
         res.render('login');
