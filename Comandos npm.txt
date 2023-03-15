@@ -1,0 +1,14 @@
+// Usar sudo en caso de ser necesario
+// Instalar solamente las dependencias que requiera el proyecto
+npm init // Comenzar el proyecto
+npm install express
+npm install -g nodemon 
+npm install ejs
+npm install sequelize	
+npm install mysql2
+npm install --save method-override	
+npm install express-session
+npm install -g --save sequelize-auto mysql2
+npm install express-validator
+npm install bcryptjs
+npm install morgan
