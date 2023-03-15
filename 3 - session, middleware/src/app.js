@@ -28,9 +28,6 @@ app.use('/', routerIndex); // Le decimos a Express que use el router de index en
 const routerPeliculas = require('./routes/routePeliculas'); // Importamos el router de peliculas
 app.use('/peliculas', requireAuth, routerPeliculas); // Le decimos a Express que use el router de peliculas en la ruta /peliculas
 
-const routerPeliculas = require('./routes/routePeliculas'); // Importamos el router de peliculas
-app.use('/usuarios', requireAuth, routerPeliculas); // Le decimos a Express que use el router de peliculas en la ruta /peliculas
-
 const routerLogin = require('./routes/routeLogin'); // Importamos el router de login
 app.use('/login', routerLogin); // Le decimos a Express que use el router de login en la ruta /login
 
