@@ -1,19 +1,19 @@
 const dbSequelize = require('../database/database'); // importa la instancia de Sequelize que creaste para la base de datos
 const models = require('../database/models/init-models')(dbSequelize);
 
-
 const peliculasController = {
     index: (req, res) => {
             models.movies.findAll()
             .then(movies => {
                 res.render('listarPeliculas', { movies });
-            })            
+            })      
     },
     detalles: (req, res) => {
         models.movies.findByPk(req.params.id, {
             include: ['genre']
         })
         .then(movie => {
+            console.log(movie.dataValues);
             res.render('detallePelicula', { movie });
         })
     },

@@ -10,7 +10,6 @@ function logMiddleware(req, res, next) {
     ' y el Accept ' + req.headers['accept']
     + "\n")
 
-
     next();
 }
 
