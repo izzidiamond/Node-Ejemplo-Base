@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Form Submit</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script>
+$(function(){
+    $("#myForm").validate();
+});
+</script>
+</head>
+<body>
+    <form action="/form?_method=PATCH" method="post" id="myForm">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+        <br>
+        <label>Apellido:</label>
+        <input type="text" name="apellido">
+        <br>
+        <button type="submit">Submit Form</button>
+    </form>
+</body>
+</html>
+
+
+
