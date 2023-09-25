@@ -18,13 +18,13 @@ function onSubmitUpdateUserForm() {
             data: JSON.stringify(formData),
             contentType: 'application/json'
         })
-        .done(function (response) {
-            if (response.messaje === 'ok') {
+        .done(function (data, textStatus, xhr) {
+            if (xhr.status === 200) {
                 alert('Usuario actualizado con éxito.');
             }
         })
-        .fail(function (jqXHR) {
-            if (jqXHR.status === 404) {
+        .fail(function (data, textStatus, xhr) {
+            if (xhr.status === 404) {
                 alert('ID de usuario no encontrado.');
             }
         })
