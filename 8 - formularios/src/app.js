@@ -4,7 +4,7 @@ const methodOverride = require('method-override');
 
 
 // Middlewares
-app.use(methodOverride('_method')); // Para poder pisar el method="POST" en el formulario por PUT y DELETE
+app.use(methodOverride('_method')); // Para poder pisar el method="POST" en el formulario por PUT, PATCH y DELETE
 app.use(express.urlencoded({ extended: true })); // Para poder leer los datos de los formularios
 app.use(express.json()); // Para poder leer los datos de los formularios en formato JSON
 app.use(express.static('../public')); // Para poder servir archivos estáticos (CSS, JS, imágenes, etc)
